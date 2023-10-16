@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Concurrency</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+    * {
+      font-family: 'Tilt Neon', cursive, Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .header {
+      padding: 5px;
+      text-align: center;
+      background: #1abc9c;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 25px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .side {
+      flex: 30%;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    .main {
+      flex: 70%;
+      background-color: white;
+      padding: 20px;
+    }
+
+
+    @media screen and (max-width: 700px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+
+    .input_text {
+      width: 100%;
+    }
+
+    .button-42 {
+      background-color: initial;
+      background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      padding: 10px;
+      outline: 0;
+      overflow: hidden;
+      pointer-events: auto;
+      position: relative;
+      text-align: center;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      vertical-align: top;
+      white-space: nowrap;
+      z-index: 9;
+      border: 0;
+      transition: box-shadow .2s;
+    }
+
+    .button-42:hover {
+      box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+    }
+
+    .required_field {
+      border-top: 1px solid #f8a100;
+      border-right: 1px solid #f8a100;
+      border-bottom: 1px solid #f8a100;
+      border-left: 3px solid #fa9600e8;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Test Concurrency</h1>
+    <p></p>
+  </div>
+
+  <div class="row">
+    <div class="side">
+      <label for="no_of_request">No of Request:</label><br>
+      <input type="number" id="no_of_request" name="no_of_request" class="input_text required_field" placeholder="1,2...N"><br>
+
+      <label for="url">URL:</label><br>
+      <input type="text" id="url" name="url" class="input_text required_field" placeholder="http://xyz.com"><br>
+
+      <label for="method">Method:</label><br>
+      <input type="radio" id="get" name="method" value="GET" required>
+      <label for="get">GET</label>
+      <input type="radio" id="post" name="method" value="POST">
+      <label for="post">POST</label><br>
+
+      <label for="header">Header</label><br>
+      <textarea id="header" name="header" rows="6" class="input_text"
+        placeholder='{ &#13; "Host":"api.domain.com", &#13; "X-Requested-With":"XMLHttpRequest", &#13; "Content-type", "application/json; charset=UTF-8" &#13; }'></textarea><br>
+
+      <label for="body">Body:</label><br>
+      <textarea id="body" name="body" rows="6" class="input_text"
+        placeholder='{ &#13; "name": "Abir", &#13; "age": 26, &#13; "id": 1 &#13; }''></textarea><br>
+<div class="cont">
+  <button id="send_button" class="button-42" onclick="sendConcurrentRequest()">Send Requests</button>
+</div>
+    </div>
+    <div class="main">
+      <h2>Response</h2>
+      <div id="response">
+        <div id="req_no"></div> <br>
+        <div id="start_time"></div> <br>
+        <div id="end_time"></div> <br>
+        <div id="time_diff"></div> <br>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
