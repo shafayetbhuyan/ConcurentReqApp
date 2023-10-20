@@ -17,6 +17,10 @@
       margin: 0;
     }
 
+    p{
+      margin: 0;
+    }
+
     .header {
       padding: 5px;
       text-align: center;
@@ -25,7 +29,7 @@
     }
 
     .header h1 {
-      font-size: 25px;
+      font-size: 22px;
     }
 
     .row {
@@ -42,7 +46,52 @@
     .main {
       flex: 70%;
       background-color: white;
-      padding: 20px;
+      padding: 10px;
+    }
+
+    #response{
+      margin: 5px 0px;
+    }
+
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .box{
+      flex: 1;
+      height: 50px;
+      margin: 2px;
+      background: #1abc9c;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .box-2{
+      flex: 1;
+      height: 110px;
+      margin: 2px;
+      background: #1abc9c;
+      border-radius: 5px;
+      text-align: center;
+      overflow: auto;
+    }
+
+    .box-3{
+      flex: 1;
+      height: 200px;
+      margin: 2px;
+      background: #1abc9c;
+      border-radius: 5px;
+      text-align: center;
+      overflow: auto;
+    }
+
+    .box_head{
+      background-color: #f8a100;
+      margin: 0px;
+      padding: 0px;
     }
 
 
@@ -104,7 +153,7 @@
   <div class="row">
     <div class="side">
       <label for="no_of_request">No of Request:</label><br>
-      <input type="number" id="no_of_request" name="no_of_request" class="input_text required_field" placeholder="1,2...N"><br>
+      <input type="number" id="no_of_request" name="no_of_request" class="input_text required_field" placeholder="1,2...N" min="1"><br>
 
       <label for="url">URL:</label><br>
       <input type="text" id="url" name="url" class="input_text required_field" placeholder="http://xyz.com"><br>
@@ -127,12 +176,64 @@
 </div>
     </div>
     <div class="main">
-      <h2>Response</h2>
+      <h2 style="margin: 0px 2px; padding: 5px; text-align: center; background: #FF7E31; border-radius: 5px;">Response</h2>
       <div id="response">
-        <div id="req_no"></div> <br>
-        <div id="start_time"></div> <br>
-        <div id="end_time"></div> <br>
-        <div id="time_diff"></div> <br>
+        <div class="container">
+          <div class="box">
+            <div class="box_head">
+              <p>No of Request</p>
+            </div>
+            <p id="req_no" style="font-weight: bold;  margin-top: 4px;"></p>
+          </div> 
+          <div class="box">
+            <div class="box_head">
+              <p>Start Time</p>
+            </div>
+            <p id="start_time" style="font-weight: bold;  margin-top: 4px;"></p>
+          </div> 
+          <div class="box">
+            <div class="box_head">
+              <p>End Time</p>
+            </div>
+            <p id="end_time" style="font-weight: bold; margin-top: 4px;"></p>
+          </div>
+          <div class="box">
+            <div class="box_head">
+              <p>Time Difference</p>
+            </div>
+            <p id="time_diff" style="font-weight: bold; margin-top: 4px;"></p>
+          </div>
+        </div>
+        <div class="container">
+          <div class="box">
+            <div class="box_head">
+              <p>URL</p>
+            </div>
+            <p id="req_url" style="font-weight: bold;  margin-top: 4px;"></p>
+          </div>
+        </div>
+        <div class="container">
+          <div class="box-2">
+            <div class="box_head">
+              <p>Header</p>
+            </div>
+            <pre id="req_header" style="margin-top: 4px; text-align: justify;"></pre>
+          </div>
+          <div class="box-2">
+            <div class="box_head">
+              <p>Body</p>
+            </div>
+            <pre id="req_body" style="margin-top: 4px; text-align: justify;"></pre>
+          </div>
+        </div>
+        <div class="container">
+          <div class="box-3">
+            <div class="box_head">
+              <p>Request Response</p>
+            </div>
+            <pre id="req_response" style="margin-top: 4px; text-align: justify; font-size: 12px;"></pre>
+          </div>
+        </div>
       </div>
     </div>
   </div>
